@@ -1,0 +1,30 @@
+function onGLC(glc) {
+    glc.loop();
+//     glc.size(400, 400);
+//     glc.setDuration(5);
+//     glc.setFPS(20);
+//     glc.setMode('single');
+//     glc.setEasing(false);
+    var list = glc.renderList,
+        width = glc.w,
+        height = glc.h,
+        color = glc.color;
+
+    // ...
+    
+    for (var x = 1; x <= 11; x++) {
+        for (var y = 1; y <= 11; y++) {
+    
+        	list.addRect({
+            	x: (x-1)*40,
+            	y: (y-1)*40,
+                w: [5, 40],
+                h: [80, 5],
+                rotation: [45, -180],
+                phase: (y / x) / 11
+        	});
+        }
+    }
+
+
+}
