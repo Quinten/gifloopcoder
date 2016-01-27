@@ -12,6 +12,7 @@ define([
 	"app/render/shapes/gear",
 	"app/render/shapes/grid",
 	"app/render/shapes/heart",
+	"app/render/shapes/image",
 	"app/render/shapes/isobox",
 	"app/render/shapes/line",
 	"app/render/shapes/oval",
@@ -39,6 +40,7 @@ define([
 		Gear,
 		Grid,
 		Heart,
+		Image,
 		Isobox,
 		Line,
 		Oval,
@@ -145,6 +147,17 @@ define([
 		return add(Shape.create(Heart, props));
 	}
 
+	function addImage(props) {
+		if(glcConfig.isStandalone) {
+			var image = document.createElement("img");
+			image.src = props.url;
+			props.image = image;
+			return add(Shape.create(Image, props));
+		}
+		alert("The Image object is only supported in the standalone version of GLC.");
+		return null;
+	}
+
 	function addIsobox(props) {
 		return add(Shape.create(Isobox, props));
 	}
@@ -244,6 +257,7 @@ define([
 		addGear: addGear,
 		addGrid: addGrid,
 		addHeart: addHeart,
+		addImage: addImage,
 		addIsobox: addIsobox,
 		addLine: addLine,
 		addOval: addOval,
@@ -258,5 +272,4 @@ define([
 		addText: addText,
 		render: render
 	};
-
 });
